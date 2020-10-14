@@ -10,5 +10,11 @@ result[value2]=$(echo "scale=2; $a*$b+$c " |bc )
 result[value3]=$(echo "scale=2; $c+$a/$b " |bc )
 result[value4]=$(echo "scale=2; $a%$b+$c " |bc )
 
+for value in ${result[@]}
+do
+	echo  $value
+	array[j]=$value
+	((j++))
+done
 
-echo "Dict " ${result[@]}
+echo "array" ${array[@]}
