@@ -10,34 +10,44 @@ result[value2]=$(($a*$b+$c))
 result[value3]=$(($c+$a/$b))
 result[value4]=$(($a%$b+$c))
 
-
 for value in ${result[@]}
 do
-	echo  $value
 	array[i]=$value
 	((i++))
-
 done
-
 echo "array" ${array[@]}
 
-#decending Array
+#Decending Array
 
 for ((i = 0; i<5; i++))
 do
-    for((j = 0; j<5-i-1; j++))
+    for((j = 0; j<5-$i; j++))
     do
-        echo "$j"
-	if [ ${array[j]} -lt ${array[$((j+1))]} ]
+	if [[ ${array[j]} -lt ${array[$j+1]} ]]
         then
-            	# swap
-            	temp=${array[j]}
-            	array[$j]=${array[$((j+1))]}
-            	array[$((j+1))]=$temp
-		echo ${array[@]}
+            temp=${array[j]}
+            array[$j]=${array[$j+1]}
+            array[$j+1]=$temp
         fi
     done
 done
-
-echo "Array in sorted in Descending order :"
+echo "Array in sorted Descending order :"
 echo ${array[@]}
+
+#Ascending Array
+
+for ((i = 0; i<5; i++))
+do
+    for((j = 0; j<5-$i; j++))
+    do
+	if [[ ${array[j]} -gt ${array[$j+1]} ]]
+        then
+            temp=${array[j]}
+            array[$j]=${array[$j+1]}
+            array[$j+1]=$temp
+        fi
+    done
+done
+echo "Array in sorted Ascending order :" 
+echo ${array[@]}
+
