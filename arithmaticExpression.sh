@@ -1,9 +1,9 @@
 #! /bin/bash -x
 
-read -p "Value 1 : " value1
-read -p "Value 2 : " value2
-read -p "Value 3 : " value3
+read -p "Value a : " a
+read -p "Value b : " b
+read -p "Value c : " c
 
-echo "Value 1 : " $value1
-echo "Value 2 : " $value2
-echo "Value 3 : " $value3
+value1=$(echo "scale=2; $a+$b*$c " |bc )
+
+echo "Compute (a+b*c) : " $value1
